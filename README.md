@@ -1,4 +1,4 @@
 lava
 ====
 
-Xilinx Lavan version 5
+Xilinx Lava version 5
