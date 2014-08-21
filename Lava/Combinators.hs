@@ -4,7 +4,7 @@
 
 module Lava.Combinators (module Lava.Combinators)
 where
-import Control.Monad.State
+import Control.Monad.State (get, put, when)
 import Lava.Netlist
 import Lava.Utils
 
