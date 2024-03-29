@@ -5,7 +5,6 @@
 module Lava.CircuitGraphToVHDL (putXilinxVHDL, vhdlPackage)
 where
 import System.IO
-	
 import Control.Monad.State
 import Data.Array.Unboxed
 import Lava.Netlist

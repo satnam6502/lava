@@ -135,9 +135,9 @@ mux (s, (i0, i1)) = lut3gate (\s i0 i1 -> if s then i1 else i0) "mux"
 muxcy :: (Bit, (Bit, Bit)) -- ^ (s, (di, ci))
          -> Out Bit        -- ^ o
 muxcy (s, (di, ci))
-  = do [o] <- primitiveGate  "muxcy" [("ci",ci), ("di", di), ("s", s)] ["o"] 
+  = do ol  <- primitiveGate  "muxcy" [("ci",ci), ("di", di), ("s", s)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -146,8 +146,9 @@ muxcy_d :: Bit                -- ^ d
            -> Bit             -- ^ di
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxcy_d ci di s 
-  = do [o, lo] <- primitiveGate "muxcy_d" [("ci",ci), ("di", di), ("s", s)] 
+  = do ol      <- primitiveGate "muxcy_d" [("ci",ci), ("di", di), ("s", s)] 
                                 ["o", "lo"] (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -157,8 +158,9 @@ muxcy_l :: Bit                -- ^ d
            -> Bit             -- ^ di
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxcy_l ci di s 
-  = do [o, lo] <- primitiveGate "muxcy_l" [("ci",ci), ("di", di), ("s", s)] 
+  = do ol      <- primitiveGate "muxcy_l" [("ci",ci), ("di", di), ("s", s)] 
                                 ["o", "lo"] (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -168,9 +170,9 @@ muxf5 :: Bit    -- ^ i0
          -> Bit -- ^ s
          -> Out Bit -- ^o
 muxf5 i0 i1 s
-  = do [o] <- primitiveGate  "muxf5" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
+  = do ol <- primitiveGate  "muxf5" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -179,8 +181,9 @@ muxf5_d :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf5_d i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf5_d" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf5_d" [("i0",i0), ("i1", i1), ("s", s)] 
                                  ["o"]  (Just (1,1))
+       let [o,  lo]= ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -190,8 +193,9 @@ muxf5_l :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf5_l i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf5_l" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf5_l" [("i0",i0), ("i1", i1), ("s", s)] 
                                            ["o", "lo"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -201,9 +205,9 @@ muxf6 :: Bit    -- ^ i0
          -> Bit -- ^ s
          -> Out Bit -- ^o
 muxf6 i0 i1 s
-  = do [o] <- primitiveGate  "muxf6" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
+  = do ol <- primitiveGate  "muxf6" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -212,8 +216,9 @@ muxf6_d :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf6_d i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf6_d" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf6_d" [("i0",i0), ("i1", i1), ("s", s)] 
                                  ["o", "lo"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -223,8 +228,9 @@ muxf6_l :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf6_l i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf6_l" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf6_l" [("i0",i0), ("i1", i1), ("s", s)] 
                                            ["o", "lo"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -234,9 +240,9 @@ muxf7 :: Bit    -- ^ i0
          -> Bit -- ^ s
          -> Out Bit -- ^o
 muxf7 i0 i1 s
-  = do [o] <- primitiveGate  "muxf7" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
+  = do ol <- primitiveGate  "muxf7" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -245,8 +251,9 @@ muxf7_d :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf7_d i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf7_d" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf7_d" [("i0",i0), ("i1", i1), ("s", s)] 
                                  ["o", "lo"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -256,8 +263,9 @@ muxf7_l :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf7_l i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf7_l" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf7_l" [("i0",i0), ("i1", i1), ("s", s)] 
                                            ["o", "lo"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -267,9 +275,9 @@ muxf8 :: Bit    -- ^ i0
          -> Bit -- ^ s
          -> Out Bit -- ^o
 muxf8 i0 i1 s
-  = do [o] <- primitiveGate  "muxf8" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
+  = do ol <- primitiveGate  "muxf8" [("i0",i0), ("i1", i1), ("s", s)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -278,8 +286,9 @@ muxf8_d :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf8_d i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf8_d" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf8_d" [("i0",i0), ("i1", i1), ("s", s)] 
                                  ["o"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -289,8 +298,9 @@ muxf8_l :: Bit                -- ^ i0
            -> Bit             -- ^ i2
            -> Out (Bit, Bit)  -- ^ (o, lo)
 muxf8_l i0 i1 s
-  = do [o, lo] <- primitiveGate  "muxf8_l" [("i0",i0), ("i1", i1), ("s", s)] 
+  = do ol <- primitiveGate  "muxf8_l" [("i0",i0), ("i1", i1), ("s", s)] 
                                            ["o", "lo"]  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -298,9 +308,9 @@ muxf8_l i0 i1 s
 xorcy :: (Bit, Bit)        -- ^ (li, ci)
          -> Out Bit        -- ^ o
 xorcy (li, ci) 
-  = do [o] <- primitiveGate  "xorcy" [("ci",ci), ("li", li)] ["o"] 
+  = do ol <- primitiveGate  "xorcy" [("ci",ci), ("li", li)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -308,8 +318,9 @@ xorcy_d :: Bit               -- ^ ci
            -> Bit            -- ^ di
            -> Out (Bit, Bit) -- ^ (ci, li)
 xorcy_d ci li 
-  = do [o, lo] <- primitiveGate  "xorcy_d" [("ci",ci), ("li", li)] ["o"] 
+  = do ol <- primitiveGate  "xorcy_d" [("ci",ci), ("li", li)] ["o"] 
                   (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -318,8 +329,9 @@ xorcy_l :: Bit               -- ^ ci
            -> Bit            -- ^ di
            -> Out (Bit, Bit) -- ^ (ci, li)
 xorcy_l ci li 
-  = do [o, lo] <- primitiveGate  "xorcy_l" [("ci",ci), ("li", li)] ["o", "lo"] 
+  = do ol <- primitiveGate  "xorcy_l" [("ci",ci), ("li", li)] ["o", "lo"] 
                                  (Just (1,1))
+       let [o, lo] = ol
        return (o, lo)
 
 -------------------------------------------------------------------------------
@@ -332,8 +344,8 @@ fd :: Bit        -- ^ clk
       -> Bit     -- ^ i
       -> Out Bit -- ^ q
 fd clk i 
-  = do [q] <- primitiveGate  "fd" [("c",clk), ("d", i)] ["q"] (Just (1,1))
-       return q
+  = do ql <- primitiveGate  "fd" [("c",clk), ("d", i)] ["q"] (Just (1,1))
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -342,9 +354,9 @@ fdc :: Bit        -- ^ clk
        -> Bit     -- ^i
        -> Out Bit -- ^ q
 fdc clk clr i 
-  = do [q] <- primitiveGate  "fdc" [("c",clk), ("clr", clr), ("d", i)] 
+  = do ql <- primitiveGate  "fdc" [("c",clk), ("clr", clr), ("d", i)] 
                              ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -353,9 +365,9 @@ fdc_1 :: Bit        -- ^ clk
          -> Bit     -- ^ i
          -> Out Bit -- ^ q
 fdc_1 clk clr i 
-  = do [q] <- primitiveGate  "fdc_1" [("c",clk), ("clr", clr), ("d", i)] 
+  = do ql <- primitiveGate  "fdc_1" [("c",clk), ("clr", clr), ("d", i)] 
                              ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -365,9 +377,9 @@ fdce :: Bit        -- ^ clk
         -> Bit     -- ^ d
         -> Out Bit -- ^ q
 fdce clk ce clr d
-  = do [q] <- primitiveGate  "fdce" [("c",clk), ("clr", clr), ("d", d), 
+  = do ql <- primitiveGate  "fdce" [("c",clk), ("clr", clr), ("d", d), 
                              ("ce", ce)]  ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -377,9 +389,9 @@ fdce_1 :: Bit        -- ^ clk
           -> Bit     -- ^ d
           -> Out Bit -- ^ q
 fdce_1 clk ce clr d
-  = do [q] <- primitiveGate  "fdce_1" [("c",clk), ("clr", clr), ("d", d), 
+  = do ql <- primitiveGate  "fdce_1" [("c",clk), ("clr", clr), ("d", d), 
                              ("ce", ce)]  ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -389,9 +401,9 @@ fdcp :: Bit -- ^ clk
         -> Bit -- ^ d
         -> Out Bit -- ^ q
 fdcp clk clr pre d
-  = do [q] <- primitiveGate  "fdcp" [("c",clk), ("clr", clr), ("d", d), 
+  = do ql <- primitiveGate  "fdcp" [("c",clk), ("clr", clr), ("d", d), 
                              ("pre", pre)]  ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -402,9 +414,9 @@ fdcpe :: Bit -- ^ clk
          -> Bit     -- ^ d
          -> Out Bit -- ^ q
 fdcpe clk ce clr pre d
-  = do [q] <- primitiveGate  "fdcpe" [("c",clk), ("clr", clr), ("d", d), 
+  = do ql <- primitiveGate  "fdcpe" [("c",clk), ("clr", clr), ("d", d), 
                              ("pre", pre), ("ce",ce)]  ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -415,9 +427,9 @@ fdcpe_1 :: Bit -- ^ clk
          -> Bit     -- ^ d
          -> Out Bit -- ^ q
 fdcpe_1 clk ce clr pre d
-  = do [q] <- primitiveGate  "fdcpe_1" [("c",clk), ("clr", clr), ("d", d), 
+  = do ql <- primitiveGate  "fdcpe_1" [("c",clk), ("clr", clr), ("d", d), 
                              ("pre", pre), ("ce",ce)]  ["q"] (Just (1,1))
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -435,10 +447,10 @@ srl16e :: Bit        -- ^ d
           -> Bit     -- ^ a3
           -> Out Bit -- ^ q
 srl16e d clk ce a0 a1 a2 a3
-  = do [q] <- primitiveGate "srl16e" [("c",clk), ("ce",ce), ("a0",a0),
+  = do ql <- primitiveGate "srl16e" [("c",clk), ("ce",ce), ("a0",a0),
                                       ("a1",a1), ("a2",a2), ("a3",a3)]
                             ["q"] Nothing
-       return q
+       return (head ql)
 
 -------------------------------------------------------------------------------
 
@@ -453,9 +465,9 @@ and2b1l :: Bit        -- ^ di
            -> Bit     -- ^ sri
            -> Out Bit -- ^ o
 and2b1l di sri
-  = do [o] <- primitiveGate  "and2b1l" [("di",di), ("sri", sri)] ["o"] 
+  = do ol <- primitiveGate  "and2b1l" [("di",di), ("sri", sri)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 -- |  Two input and gate implemented in place of a slice latch
@@ -464,9 +476,9 @@ or2l :: Bit        -- ^ di
         -> Bit     -- ^ sri
         -> Out Bit -- ^ o
 or2l di sri
-  = do [o] <- primitiveGate  "or2l" [("di",di), ("sri", sri)] ["o"] 
+  = do ol <- primitiveGate  "or2l" [("di",di), ("sri", sri)] ["o"] 
               (Just (1,1))
-       return o
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -482,8 +494,8 @@ or2l di sri
 ibufg :: Bit        -- ^ i
          -> Out Bit -- ^ o
 ibufg i
-  = do [o] <- primitiveGate  "ibufg" [("i", i)] ["o"] Nothing
-       return o
+  = do ol <- primitiveGate  "ibufg" [("i", i)] ["o"] Nothing
+       return (head ol)
 
 -------------------------------------------------------------------------------
 -- | Global clock buffer
@@ -491,8 +503,8 @@ ibufg i
 bufg :: Bit        -- ^ i
          -> Out Bit -- ^ o
 bufg i
-  = do [o] <- primitiveGate  "bufg" [("i", i)] ["o"] Nothing
-       return o
+  = do ol <- primitiveGate  "bufg" [("i", i)] ["o"] Nothing
+       return (head ol)
 
 -------------------------------------------------------------------------------
 -- | Global clock buffer
@@ -500,8 +512,8 @@ bufg i
 bufgp :: Bit        -- ^ i
          -> Out Bit -- ^ o
 bufgp i
-  = do [o] <- primitiveGate  "bufgp" [("i", i)] ["o"] Nothing
-       return o
+  = do ol <- primitiveGate  "bufgp" [("i", i)] ["o"] Nothing
+       return (head ol)
 
 -------------------------------------------------------------------------------
 -- | Output buffer
@@ -509,8 +521,8 @@ bufgp i
 obufg :: Bit        -- ^ i
          -> Out Bit -- ^ o
 obufg i
-  = do [o] <- primitiveGate  "obuf" [("i", i)] ["o"] Nothing
-       return o
+  = do ol <- primitiveGate  "obuf" [("i", i)] ["o"] Nothing
+       return (head ol)
 
 -------------------------------------------------------------------------------
 
@@ -522,7 +534,8 @@ obufg i
 obufds :: Bit              -- ^ i
          -> Out (Bit, Bit) -- ^ (o, ob)
 obufds i
-  = do [o, ob] <- primitiveGate  "bufds" [("i", i)] ["o", "ob"] Nothing
+  = do ol <- primitiveGate  "bufds" [("i", i)] ["o", "ob"] Nothing
+       let [o, ob] = ol
        return (o, ob)
 
 -------------------------------------------------------------------------------
@@ -581,14 +594,14 @@ vreg clk = maP (fd clk)
 -- | A supply of a constant zero signal.
 
 gnd :: Out Bit
-gnd = do [g] <- primitiveGate  "gnd" [] ["g"] Nothing
-         return g
+gnd = do gl <- primitiveGate  "gnd" [] ["g"] Nothing
+         return (head gl)
 
 -------------------------------------------------------------------------------
 -- | A supply of a constant one signal.
 
 vcc :: Out Bit
-vcc = do [p] <- primitiveGate  "vcc" [] ["p"] Nothing
-         return p
+vcc = do pl <- primitiveGate  "vcc" [] ["p"] Nothing
+         return (head pl)
 
 -------------------------------------------------------------------------------

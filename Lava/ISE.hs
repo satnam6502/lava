@@ -5,7 +5,7 @@
 module Lava.ISE (Effort(..), xflow, implement)
 where
 import System.Directory
-import System.Cmd
+import System.Process
 import Control.Monad
 
 -- * Circuit implementation with the Xilinx ISE tools
